@@ -22,7 +22,7 @@ class Client {
         let y = robot.Position.y;
         display.activateBlock(x, y);
       }
-      if (robot.commandResponse !== '') {
+      if (robot.commandResponse !== '' || robot.commandResponse === undefined) {
         alert(robot.commandResponse);
       }
 
