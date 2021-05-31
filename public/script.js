@@ -1,8 +1,7 @@
 import Client from "./js/Client.js";
 import VerizonDisplay from "./js/VerizonDisplay.js";
 const client = new Client(
-  new WebSocket("ws://localhost:9898/"),
-  //new WebSocket("ws://localhost:3001/"),
+  new WebSocket("ws://localhost:3001/"),
   new VerizonDisplay(document),
   false,
   false
