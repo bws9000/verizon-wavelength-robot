@@ -1,14 +1,30 @@
+html,
 body {
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
 }
-.container {
+body {
+  display: table;
+  margin: 0;
+}
+h3 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: smaller;
+  color: #8a2be2;
+}
+.control {
+  clear: both;
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+}
+.inner_container {
+  max-height: 100%;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: black;
   color: #fff;
 }
 

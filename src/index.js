@@ -57,7 +57,7 @@ function robotCommand(command) {
     case "activate":
       robot.active = true;
       robot.Position = { x: 0, y: 0 };
-      console.log("Robot Activated. ( refresh browser at localhost:3000");
+      console.log("Robot Activated. ( refresh browser at localhost:3000 )");
       break;
     case "move up":
       ypos = y + 1;

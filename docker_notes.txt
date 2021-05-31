@@ -1,2 +1,3 @@
 docker build . -t snyderburt/vzn-wvl-robot
 docker run -p 80:3000 -p 3001:9898 -d snyderburt/vzn-wvl-robot
+docker run -p 80:3000 -p 3001:9898 -d snyderburt/verizon-wavelength-robot

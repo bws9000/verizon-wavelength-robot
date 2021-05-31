@@ -8,7 +8,10 @@ class VerizonDisplay {
   updateDisplay() {
     this.grid = `
     <div class="main">
-    <div class="container">
+    <div class="control">
+    <h3>Robot Remote Control Simulator</h2>
+    </div>
+    <div class="inner_container">
         <div class="coordinate-box">
             <div id="04">[0,4]</div>
             <div id="14">[1,4]</div>
@@ -40,6 +43,9 @@ class VerizonDisplay {
             <div id="30">[3,0]</div>
             <div id="40">[4,0]</div>
         </div>
+    </div>
+    <div class="control">
+    <button id="activateCommand" >activate</button>
     </div>
     </div>
     `;

@@ -10,7 +10,6 @@ class Client {
     ws.onopen = () => {
       var message = { message: "ws connected." };
       this.ws.send(JSON.stringify(message));
-
     };
 
     //to browser ws
@@ -23,8 +22,11 @@ class Client {
         let y = robot.Position.y;
         display.activateBlock(x, y);
       }
+      if (robot.commandResponse !== '') {
+        alert(robot.commandResponse);
+      }
 
-      console.log('msg: ' + msg);
+      console.log('msg: ' + msg.data);
 
     };
 
@@ -38,6 +40,11 @@ class Client {
     }
 
     this.dev();
+  }
+
+  activateCommand() {
+    let msg = { "type": "activate-robot" }
+    let response = this.ws.send(JSON.stringify(msg));
   }
 
   sendPosition(x, y) {
