@@ -1,11 +1,11 @@
 class Client {
   constructor(ws, display, log, commandline) {
+
     this.commandline = commandline;
     this.display = display;
     this.log = log;
     this.ws = ws;
     this.display;
-
 
     ws.onopen = () => {
       var message = { message: "ws connected." };
@@ -25,9 +25,7 @@ class Client {
       if (robot.commandResponse !== '' || robot.commandResponse === undefined) {
         alert(robot.commandResponse);
       }
-
       console.log('msg: ' + msg.data);
-
     };
 
     if (this.commandline) {

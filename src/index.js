@@ -1,32 +1,25 @@
 "use strict";
 
-import Robot from "./wsdata/RobotData";
-const robot = new Robot();
-
-//display
 import express from "express";
+import ws from "ws";
+import Robot from "./wsdata/RobotData";
+
+const port = 9898;
+const clients = [];
+const robot = new Robot();
 const app = express();
-const port = 3000;
+
 app.use(express.static("public"));
+const wss = new ws.Server({ noServer: true });
 
-//websocket
-import { createServer } from "http";
-import { server as WebSocketServer } from "websocket";
-const server = createServer();
-server.listen(9898);
-const ws = new WebSocketServer({
-  httpServer: server,
-});
-
-ws.on("request", function (req) {
-  const conn = req.accept(null, req.origin);
+wss.on('connection', (conn) => {
   conn.on("message", function (message) {
-    //console.log("message: " + message);
-    robot.recieved(message.utf8Data);
-    conn.sendUTF(robot.sendObjectToDisplay());
-  });
-  conn.on("close", function (code, desc) {
-    console.log("client connection closed " + code + " " + desc);
+    robot.recieved(message);
+    wss.clients.forEach(function each(client) {
+      if (client !== wss && client.readyState === ws.OPEN) {
+        conn.send(robot.sendObjectToDisplay());
+      }
+    });
   });
 });
 
@@ -86,4 +79,10 @@ stdin.addListener("data", (nugget) => {
   let data = nugget.toString().trim();
   robotCommand(data);
 });
-app.listen(port, () => console.log(`listening on port ${port}`));
+
+const server = app.listen(port, () => console.log(`listening on port ${port}`));
+server.on('upgrade', (request, socket, head) => {
+  wss.handleUpgrade(request, socket, head, socket => {
+    wss.emit('connection', socket, request);
+  });
+});

@@ -28,7 +28,8 @@
   "homepage": "https://github.com/bws9000/robot-simulator#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "websocket": "^1.0.33"
+    "websocket": "^1.0.33",
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",

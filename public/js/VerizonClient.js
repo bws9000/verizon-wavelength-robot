@@ -11,7 +11,6 @@ class VerizonClient {
     ws.onmessage = function (e) {
       console.log(e.data);
     };
-
     // setInterval(() => {
     //   let msg = { message: "give me data" };
     //   ws.send(JSON.stringify(msg)); //heartbeat
