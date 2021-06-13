@@ -4,7 +4,7 @@ import express from "express";
 import ws from "ws";
 import Robot from "./wsdata/RobotData";
 
-const port = 3000;
+const port = 9898;
 const clients = [];
 const robot = new Robot();
 const app = express();
