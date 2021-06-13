@@ -12,7 +12,7 @@ class VerizonDisplay {
     <h3>Robot Remote Control Simulator</h2>
     </div>
     <div class="inner_container">
-        <div class="coordinate-box">
+        <div id="cbox" class="coordinate-box">
             <div id="04">[0,4]</div>
             <div id="14">[1,4]</div>
             <div id="24">[2,4]</div>
@@ -45,7 +45,9 @@ class VerizonDisplay {
         </div>
     </div>
     <div class="control">
-    <button id="activateCommand" >activate</button>
+    <button id="activateCommand">#1 activate</button> | 
+    <button id="testCommand">#2 start latency test</button> |
+    <button id="refresh">refresh</button>
     </div>
     </div>
     `;
@@ -55,8 +57,10 @@ class VerizonDisplay {
   activateBlock(x, y) {
     let coordinate = x + "" + y;
     var elem = this.document.getElementById(coordinate);
-    elem.style.backgroundColor = "#9400D3";
-    elem.style.color = "#FFF";
+    if (elem !== null) {
+      elem.style.backgroundColor = "#9400D3";
+      elem.style.color = "#FFF";
+    }
   }
 
   clear() {

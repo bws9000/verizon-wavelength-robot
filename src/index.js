@@ -13,13 +13,18 @@ app.use(express.static("public"));
 const wss = new ws.Server({ noServer: true });
 
 wss.on('connection', (conn) => {
+  clients.push(conn);
   conn.on("message", function (message) {
+    console.log('public ui: ' + message);
+    let msg = JSON.parse(message);
+    if (msg.testOne !== undefined) {
+      robot.recieved(JSON.stringify({ "type": "set-obstacle-from-android", "xy": msg.testOne }));
+    }
+    // if (msg.collision !== undefined) {
+    //   robot.recieved(JSON.stringify({ "type": "collision", "xy": msg.collision }));
+    // }
     robot.recieved(message);
-    wss.clients.forEach(function each(client) {
-      if (client !== wss && client.readyState === ws.OPEN) {
-        conn.send(robot.sendObjectToDisplay());
-      }
-    });
+    clients.forEach(s => s.send(robot.sendObjectToDisplay()));
   });
 });
 

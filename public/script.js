@@ -16,12 +16,26 @@ const client = new Client(
 );
 
 document.addEventListener('click', function (e) {
+
+  if (e.target.id === 'activateCommand') {
+    client.activateCommand();
+    return;
+  }
+
+  if (e.target.id === 'testCommand') {
+    client.checkActiveForTestAndRun();
+    return;
+  }
+
+  if (e.target.id === 'refresh') {
+    window.location.reload();
+    return;
+  }
+
+
   let x = e.target.id.charAt(0);
   let y = e.target.id.charAt(1);
   client.sendPosition(x, y);
 
-  if (e.target.id === 'activateCommand') {
-    client.activateCommand();
-  }
 }, false);
 
