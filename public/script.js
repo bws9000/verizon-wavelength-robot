@@ -3,7 +3,7 @@ import VerizonDisplay from "./js/VerizonDisplay.js";
 
 let ip = '54.205.23.184';
 //let ip = 'localhost';
-let port = 3001;
+let port = 9898;
 
 
 //public user interface
