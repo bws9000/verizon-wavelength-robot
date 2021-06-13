@@ -1,8 +1,8 @@
 import Client from "./js/Client.js";
 import VerizonDisplay from "./js/VerizonDisplay.js";
 
-let ip = '54.205.23.184';
-//let ip = 'localhost';
+//let ip = '54.205.23.184';
+let ip = '0.0.0.0';
 let port = 3000;
 
 
